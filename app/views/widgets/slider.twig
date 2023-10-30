@@ -1,0 +1,71 @@
+<section id="home" data-anchor="home" class="main-slider" ref="sliderSection">
+    
+    <div class="main-slider__swiper swiper-container">
+        <div class="swiper-wrapper main-slider__wrapper">
+            <div 
+                class="swiper-slide main-slider__slide" 
+            >
+                <div class="main-slider__image" :style="{transform: paralaxEffect?.paralax?.slider}">
+                    <img src="https://cms.abpx.kz{{ slider_image.path }}">
+                </div>
+                <div class="main-slider__content">
+                    <div class="slider-promo">
+                        <div class="slider-promo__developer promo-developer">
+                            <span class="promo-developer__label">{{ translate['developer']|raw }}</span>
+                            <img 
+                                src="https://cms.abpx.kz/storage/uploads/2022/02/09/620411381e38861c9645a93a2blogo-bold-1.svg" 
+                                class="promo-developer__logo"
+                            >
+                            <a href="https://exin.kz/" target="_blank" class="promo-developer__link">
+                                exin.kz
+                            </a>
+                        </div>
+                        <div class="slider-promo__info promo-info">
+                            <div class="promo-info__price promo-price">
+                                <h3 class="promo-price__title">
+                                    {% if lang == 'kk' %}
+                                        {{ slider_price }} бастап тг/м<sup>2</sup>
+                                    {% else %}
+                                        от {{ slider_price }} тг/м<sup>2</sup>
+                                    {% endif %}
+                                </h3>
+                            </div>
+                            <div class="promo-info__contribution promo-contribution">
+                                <span class="promo-contribution__label">
+                                    {{ translate['payment_from']|raw }}
+                                </span>
+                                <span class="promo-contribution__value">
+                                    {{ slider_contribution }}
+                                </span>
+                            </div>
+                            <div class="promo-info__links promo-links">
+
+                                <div 
+                                    class="section__paralax promo-links__paralax" 
+                                    style="background-image: url(https://cms.abpx.kz/storage/uploads/2022/10/20/63512b3579128order-img-1.svg);"
+                                ></div>
+
+                                <span class="promo-links__label">
+                                    {{ translate['new_area']|raw }}
+                                </span>
+                                <a href="#contacts" class="promo-links__adress">
+                                    {{ site_adress|raw }}
+                                </a>
+                                <a href="#appartaments" class="promo-links__desctop-btn btn btn--outline btn--white">
+                                    {{ translate['select_flat'] }}
+                                </a>
+                                <a href="#appartaments" class="promo-links__mobile-btn btn btn--gradient">
+                                    {{ translate['select_flat'] }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#contacts" class="main-slider__adress">
+                    {{ site_adress|raw }}
+                </a>
+            </div>
+        </div>
+    </div>
+    
+</section>

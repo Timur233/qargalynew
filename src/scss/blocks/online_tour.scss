@@ -1,0 +1,7 @@
+.online-tour {
+    &__frame {
+        @media (max-width: 768px) {
+            height: 450px !important;
+        }
+    }
+}

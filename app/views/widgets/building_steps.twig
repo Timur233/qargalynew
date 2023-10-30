@@ -1,0 +1,53 @@
+{% if building_steps is defined and building_steps is not empty %}
+    <section id="building-steps" data-anchor="building-steps" class="building-steps section">
+        <div class="container">
+            <div class="section__title-block">
+                <h2 class="section__title">{{ translate['building_steps'] }}</h2>
+            </div>
+        </div>
+        <div class="container">
+            <carousel-swiper 
+                class="building-steps__list"
+                :per-view="6" 
+                :is-loop="false" 
+                :breakpoints="{
+                    0: {
+                        slidesPerView: 1.8
+                    },
+                    520: {
+                        slidesPerView: 3.2
+                    },
+                    768: {
+                        slidesPerView: 4
+                    },
+                    1020: {
+                        slidesPerView: 5
+                    },
+                    1200: {
+                        slidesPerView: 6
+                    }
+                }" 
+            >
+                {% for item in building_steps %}
+                    <swiper-slide 
+                        class="building-steps__item building-item" 
+                        @click="showLightBox(
+                            {% if item.panoramas %}'{{ item.panoramas[0] }}', true{% endif %}
+                            {% if item.gallery %}
+                                [{% for image in item.gallery %} 
+                                    'https://cms.abpx.kz{{ image.path }}', 
+                                {% endfor %}]
+                            {% endif %}
+                        )"
+                    >
+                        <span class="building-item__plus">+</span>
+                        <span class="building-item__date">
+                            {{ translate[item.format_date.month] }}
+                            {{ item.format_date.year }}
+                        </span>
+                    </swiper-slide>
+                {% endfor %}
+            </carousel-swiper>
+        </div>
+    </section>
+{% endif %}

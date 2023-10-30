@@ -1,0 +1,47 @@
+<section 
+    id="infrastructure" 
+    data-anchor="infrastructure"
+    class="infrastructure section section--gray"
+    ref="infrastructure"
+>
+
+    <div class="container">
+        <div class="section__title-block infrastructure__title">
+            <h2 class="section__title">
+                {{ infrastructure_title }}
+            </h2>
+        </div>
+
+        {% if infrastructure_left or infrastructure_right %}
+            <div class="flex infrastructure__content infrastructure-content">
+                <div class="infrastructure-content__item flex__6">
+                    {{ infrastructure_left|raw }}
+                </div>
+                <div class="infrastructure-content__item flex__6">
+                    {{ infrastructure_right|raw }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if infrastructure_shorts|length > 0 %}
+            <div class="infrastructure__shorts flex infrastructure-shorts">
+                {% for item in infrastructure_shorts %}
+                    <div class="infrastructure-shorts__item flex__4 infrastructure-short">
+                        <div class="infrastructure-short__title">
+                            {{ item.children[0].settings.text }}
+                        </div>
+                        <div class="infrastructure-short__desc">
+                            {{ item.children[1].settings.text }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <infrastructure
+            :lang="'{{ lang }}'"
+            :center="[{{ infrastructure_center[0] }}, {{ infrastructure_center[1] }}]"
+            :markers="JSON.parse(`{{ infrastructure_markers|json_encode(constant('JSON_PRETTY_PRINT')) }}`)"
+        ></infrastructure>
+    </div>
+</section>

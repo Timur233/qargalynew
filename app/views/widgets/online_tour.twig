@@ -1,0 +1,24 @@
+{% if online_tour %}
+    <section class="section section--pb online-tour">
+        <div class="container">
+            <div class="section__title-block">
+                <h2 class="section__title">{{ online_tour_title }}</h2>
+            </div>
+        </div>
+
+        <div class="container">
+            <iframe 
+                width="100%"
+                id="embed-id" 
+                loading="lazy" 
+                class="ku-embed online-tour__frame" 
+                frameborder="0" 
+                allowfullscreen="" 
+                allow="xr-spatial-tracking; gyroscope; accelerometer" 
+                scrolling="no" 
+                src="{{ online_tour_link }}" 
+                style="height: 700px;"
+            ></iframe>
+        </div>
+    </section>
+{% endif %}

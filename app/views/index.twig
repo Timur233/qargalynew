@@ -1,0 +1,133 @@
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <!--meta name="viewport" content="width=1650, initial-scale=0, maximum-scale=5.0, user-scalable=1" /-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{{ site_title }}</title>
+    <link rel="shortcut icon" href="https://cms.abpx.kz/{{ site_favicon.path }}" type="image/png">
+    <link rel="stylesheet" href="{{ base_url }}assets/css/app.min.css?v=9">
+
+    {{ site_scripts_in_head|raw }}
+  
+  </head>
+  <body>
+  
+    {{ site_scripts_in_body|raw }}
+
+    <div id="app">
+
+      <fs-lightbox
+        :toggler="isLightbox"
+        :sources="sourcesLightbox"
+        :disableLocalStorage="true"
+        :loadOnlyCurrentSource="true"
+        :exitFullscreenOnClose="true"
+        :slide="1"
+        :key="lightboxKey"
+      ></fs-lightbox>
+
+      <fs-lightbox
+        :toggler="isBuildingStepBox"
+        :sources="buildingStepSource"
+        :disableLocalStorage="true"
+        :loadOnlyCurrentSource="true"
+        :exitFullscreenOnClose="true"
+        :slide="1"
+        :key="lightboxKey + 1"
+      ></fs-lightbox>
+  
+      {{ include('widgets/_header.twig') }}
+  
+      {{ include('widgets/slider.twig') }}
+
+      {{ include('widgets/discounts.twig') }}
+
+      {{ include('widgets/carousel.twig') }}
+  
+      {{ include('widgets/pay_methods.twig') }}
+
+      {{ include('widgets/banners.twig') }}
+
+      {{ include('widgets/about_project.twig') }}
+
+      {{ include('widgets/benefits.twig') }}
+
+      {{ include('widgets/main_callback.twig') }}
+
+      {{ include('widgets/appartaments.twig') }}
+
+      {{ include('widgets/gallery.twig') }}
+
+      {{ include('widgets/online_tour.twig') }}
+
+      {{ include('widgets/commerce.twig') }}
+
+      {{ include('widgets/infrastructure.twig') }}
+
+      {{ include('widgets/building_steps.twig') }}
+
+      {{ include('widgets/callback.twig') }}
+
+      {{ include('widgets/about_company.twig') }}
+
+      {{ include('widgets/footer.twig') }}
+
+      {{ include('widgets/fixed_buttons.twig') }}
+
+      <modal :is-show="callbackModalShow" @close-modal="callbackModalShow = false">
+        <form-modal
+          :callback-form-title="'{{ translate['callback_form_title']|raw }}'"
+          :user-name-placeholder="'{{ translate['name'] }}'"
+          :no-valid-phone-number="'{{ translate['no_valid_number'] }}'"
+          :no-valid-form-data="'{{ translate['no_valid_form'] }}'"
+          :submit-text="'{{ translate['send'] }}'"
+          @show-form-result="callbackResultShow = true"
+        >
+          <div class="section__title-block callback-h__title-block">
+              <h2 class="section__title section__title--gold">
+                {{ translate['thanks'] }}!<br>
+                {{ translate['promise'] }}
+              </h2>
+          </div>
+          <div class="flex">
+            <div class="flex__8">
+              <button 
+                class="btn btn--gradient" 
+                @click="callbackModalShow = false"
+              >{{ translate['close'] }}</button>
+            </div>
+          </div>
+        </form-modal>
+      </modal>
+
+      <modal :is-show="callbackResultShow" @close-modal="callbackResultShow = false">
+        <div class="section__title-block callback-h__title-block">
+            <h2 class="section__title section__title--gold">
+              {{ translate['thanks'] }}!<br>
+              {{ translate['promise'] }}
+            </h2>
+        </div>
+        <div class="flex">
+          <div class="flex__8">
+            <button 
+              class="btn btn--gradient" 
+              @click="callbackResultShow = false"
+            >{{ translate['close'] }}</button>
+          </div>
+        </div>
+      </modal>
+
+      <modal :is-show="airMenuShow" @close-modal="airMenuShow = false">
+        {{ include('widgets/air_menu.twig') }}
+      </modal>
+      
+    </div>
+
+  </body>
+
+  <script src="{{ base_url }}assets/js/app.min.js?v=9"></script>
+
+  {{ site_scripts_in_footer|raw }}
+
+</html>

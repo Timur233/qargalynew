@@ -1,0 +1,62 @@
+{% if commerce %}
+<section class="
+        commerce 
+        section 
+        section--primary 
+        section--crop
+    "
+    ref="commerceBlock"
+>
+    
+    <img 
+        class="section__paralax section__paralax--primary" 
+        src="https://cms.abpx.kz/storage/uploads/2022/10/19/634fda74b60e6order-img-3.svg"
+        :style="{transform: paralaxEffect?.paralax?.commerce}"
+    >
+    <img 
+        class="section__paralax section__paralax--second" 
+        src="https://cms.abpx.kz/storage/uploads/2022/10/20/63512b3579128order-img-1.svg"
+        :style="{transform: paralaxEffect?.paralax?.commerce_two}"
+    >
+
+    <div class="container">
+        <div class="flex">
+            <div class="flex__7 com-info">
+                <div class="section__title-block">
+                    <h2 class="section__title commerce__title section__title--gold">
+                        {{ commerce_title|raw }}
+                    </h2>
+                </div>
+                <span class="com-info__label">
+                    {{ commerce_desc|raw }}
+                </span>
+                <div class="flex com-info__items">
+                    {% for fact in commerce_facts %}
+                        <div class="flex__6 com-info__item">
+                            {% if fact.children[0].settings.image.path %}
+                                <img 
+                                    src="https://cms.abpx.kz{{ fact.children[0].settings.image.path }}" 
+                                    alt="{{ fact.children[1].settings.text }}"
+                                >
+                            {% endif %}
+                            <span>{{ fact.children[1].settings.text }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button 
+                    class="btn btn--gradient com-info__button"
+                    @click="callbackModalShow = !callbackModalShow"
+                >
+                    {{ translate['consultation'] }}
+                </button>
+            </div>
+            <div class="flex__5 com-image">
+                <div class="commerce__image">
+                    <img src="https://cms.abpx.kz{{ commerce_image.path }}" class="com-image__img">
+                    <span class="com-image__label">{{ commerce_label }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

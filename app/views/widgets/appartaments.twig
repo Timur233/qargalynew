@@ -1,0 +1,54 @@
+<section id="appartaments" 
+    data-anchor="appartaments"
+    class="
+        section 
+        section--gray 
+        section--crop 
+        appartaments
+    "
+    ref="appartaments"
+>
+    <img 
+        src="https://cms.abpx.kz/storage/uploads/2022/11/10/636cc20e3fe0fflats-img.svg" 
+        class="section__paralax appartaments__paralax"
+        :style="{transform: paralaxEffect?.paralax?.appartaments}"
+    >
+    <div class="container">
+        <appartaments
+            title="{{ flats_title }}"
+            room-item="{{ translate['room_item'] }}"
+            rooms-cap="{{ translate['rooms'] }}"
+            square-cap="{{ translate['square'] }}"
+        >
+            <div class="flats-call">
+                <div class="flats-call pay-info">
+                    <h2 class="pay-info__title">{{ flats_terms_title }}</h2>
+                    <ul class="pay-info__items">
+                        {% for item in flats_terms %}
+                            <li class="{{ item.settings.id }}" @click="payInfoId = '{{ item.settings.id }}'; payInfoShow = true;">{{ item.children[0].settings.text }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button 
+                    class="btn btn--gradient" 
+                    @click="callbackModalShow = !callbackModalShow"
+                >{{ translate['leave_order'] }}</button>
+            </div>
+        </appartaments>
+    </div>
+</section>
+
+{% for item in flats_terms %}
+    <modal :is-show="payInfoShow && payInfoId === '{{ item.settings.id }}'" @close-modal="payInfoShow = false">
+        <div class="pay-info__modal">
+            <div class="section__title-block">
+                <h2 class="section__title section__title--gold">
+                    {{ item.children[0].settings.text }}
+                </h2>
+            </div>
+            <div class="pay-info__content">
+                {{ item.children[1].settings.text|raw }}
+            </div>
+        </div>
+    </modal>
+{% endfor %}

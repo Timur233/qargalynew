@@ -1,0 +1,28 @@
+<section class="section section--pb second-callback">
+    <div class="container">
+        <div class="second-callback__block">
+    
+            <img 
+                class="section__paralax section__paralax--primary" 
+                src="https://cms.abpx.kz/storage/uploads/2022/10/19/634fda74b60e6order-img-3.svg"
+            >
+            <img 
+                class="section__paralax section__paralax--second" 
+                src="https://cms.abpx.kz/storage/uploads/2022/10/20/63512b3579128order-img-1.svg"
+            >
+
+            <img 
+                src="https://cms.abpx.kz/storage/uploads/2022/12/01/638906cb2172alogo-white.svg" 
+                class="second-callback__logo"
+            >
+
+            <callback-form class="callback-h__form second-callback__form flex__8"
+               user-name-placeholder="{{ translate['name'] }}"
+               no-valid-phone-number="{{ translate['no_valid_number'] }}"
+               no-valid-form-data="{{ translate['na_valid_form'] }}"
+               submit-text="{{ translate['leave_order'] }}"
+               @show-form-result="callbackResultShow = true"
+            ></callback-form>
+        </div>
+    </div>
+</section>

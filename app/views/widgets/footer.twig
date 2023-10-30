@@ -1,0 +1,67 @@
+<footer id="contacts" data-anchor="contacts" class="common-footer section section--primary">
+
+    <img 
+        src="https://cms.abpx.kz/storage/uploads/2022/11/14/63723d05efc21contacts-img.svg"
+        class="section__paralax common-footer__paralax"
+        :style="{transform: paralaxEffect?.paralax?.about_company_two}"
+    >
+
+    <div class="container">
+        <div class="flex">
+            <div class="flex__8 common-footer__map">
+                <footer-map
+                    :center="[{{ map_center[0] }}, {{ map_center[1] }}]"
+                    :polygons="[{% for polygon in map_polygons %}
+                    [{% for item in polygon %}[{{ item[0] }},{{ item[1] }}],{% endfor %}],{% endfor %}]"
+                    :markers="JSON.parse(`{{ map_markers|json_encode(constant('JSON_PRETTY_PRINT')) }}`)"
+                ></footer-map>
+            </div>
+            <div class="flex__4 contacts">
+                <div class="section__title-block">
+                    <h2 class="section__title section__title--gold">{{ translate['contacts'] }}</h2>
+                </div>
+
+                <div class="contacts__items">
+                    <div class="contact-item">
+                        <img src="https://cms.abpx.kz/storage/uploads/2022/11/14/6372373b23cf7icon-pin.svg" class="contact-item__icon">
+                        <span class="contact-item__label">
+                            {{ site_adress|raw }}
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <img src="https://cms.abpx.kz/storage/uploads/2022/11/14/6372373cd494aicon-phone.svg" class="contact-item__icon">
+                        <a href="tel:{{ site_phone }}" class="contact-item__label contact-item__phone">
+                            <strong>{{ site_phone }}</strong>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <img src="https://cms.abpx.kz/storage/uploads/2022/11/14/6372373e1e72661e668600bdadGroup-24.svg" class="contact-item__icon">
+                        <span class="contact-item__label">
+                            {{ site_adress_two|raw }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="contacts__social">
+                    {% if site_insta %}
+                        <a href="https://instagram.com/{{ site_insta }}" target="_blank" class="contacts__social-item">
+                            <img src="https://cms.abpx.kz/storage/uploads/2022/11/14/6372384471240icon-instagram.svg">
+                        </a>
+                    {% endif %}
+                    {% if site_face %}
+                        <a href="https://facebook.com/{{ site_face }}" target="_blank" class="contacts__social-item">
+                            <img src="https://cms.abpx.kz/storage/uploads/2022/11/14/6372384351f71icon-facebook.svg">
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="contacts__copyright">
+                    <p>© QrgalyCity 2023. {{ translate['copyright'] }}</p>
+                    <p>
+                        {{ translate['footer_disclaimer'] }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

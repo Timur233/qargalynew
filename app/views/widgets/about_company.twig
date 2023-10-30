@@ -1,0 +1,68 @@
+<section 
+    id="about-company" 
+    data-anchor="about-company"
+    class="about-company section section--gradient"
+    ref="aboutCompany"
+>
+
+    <img 
+        style="display: none;"
+        src="https://cms.abpx.kz/storage/uploads/2022/11/14/6372306eb3b53about-img-1.svg"
+        class="section__paralax about-company__paralax"
+        :style="{transform: paralaxEffect?.paralax?.about_company}"
+    >
+
+    <img 
+        src="https://cms.abpx.kz/storage/uploads/2022/11/10/636cc20e3fe0fflats-img.svg"
+        class="section__paralax about-company__paralax about-company__paralax--two"
+        :style="{transform: paralaxEffect?.paralax?.about_company_two}"
+    >
+
+    <div class="container">
+        <div class="about-company__block flex">
+            <div class="flex__9">
+                <div class="company-info">
+                    <div class="flex">
+                        <div class="flex__4 company-info__logo">
+                            <img 
+                                src="https://cms.abpx.kz/storage/uploads/2022/02/09/620411381e38861c9645a93a2blogo-bold-1.svg"
+                                class="company-info__logo-img"
+                            >
+                            <a 
+                                href="https://exin.kz/" 
+                                target="_blank" 
+                                class="company-info__link"
+                            >Exin.kz</a>
+                        </div>
+                        <div class="flex__8 company-info__text company-text">
+                            <h3 class="company-text__title">
+                                {{ company_title }}
+                            </h3>
+                            {{ company_about|raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex__3">
+                <div class="company-items">
+                    <img 
+                        class="section__paralax company-items__paralax" 
+                        src="https://cms.abpx.kz/storage/uploads/2022/10/20/63512b3579128order-img-1.svg" 
+                    >
+
+                    {% for item in company_items %}
+                        <div class="company-items__point">
+                            <div class="company-items__number">
+                                {{ item.children[0].settings.text|raw }}
+                            </div>
+                            <span class="company-items__label">
+                                {{ item.children[1].settings.text|raw }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

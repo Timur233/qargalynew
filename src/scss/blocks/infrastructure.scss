@@ -1,0 +1,97 @@
+.infrastructure {
+    &__title {
+        margin-bottom: 24px;
+    }
+
+    &__content {
+        margin-bottom: 32px;
+    }
+
+    &__shorts {
+        margin-bottom: 40px;
+    }
+
+    &__menu {
+        margin-bottom: 32px;
+    }
+
+    &__map {
+        height: 450px !important;
+    }
+}
+
+.infrastructure-content {
+    &__item {
+        padding-right: spacer(4);
+
+        & > div > *:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 990px) {
+            padding-right: 0;
+            padding-bottom: spacer(4);
+            width: 100%;
+        }
+    }
+}
+
+.infrastructure-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+
+    &__item {
+        padding: 8px 16px;
+        color: #333;
+        line-height: 1;
+        border-radius: 2px;
+        background-color: rgba(236, 236, 236, .7);
+        user-select: none;
+        cursor: pointer;
+        transition: background-color .27s;
+        outline: none !important;
+        box-shadow: none !important;
+
+        &:hover {
+            background-color: rgba(207, 207, 207, 0.7);
+        }
+
+        &--active {
+            color: #fff;
+            background-color: #cfa36a;
+            background-image: linear-gradient(188.99deg, rgba(242, 143, 23, 0.7411764706) 31.49%, rgba(254, 237, 0, 0.7215686275) 150.88%);
+        }
+    }
+}
+
+.infrastructure-short {
+    margin-bottom: spacer(10);  
+    padding-right: spacer(4);
+
+    @media (max-width: 990px) {
+        width: 50%;
+        margin-bottom: spacer(5);    
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        font-size: 24px;
+        font-weight: 600;
+        color: #eba035;
+    
+        &::before {
+            content: '';
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-image: url(https://cms.abpx.kz/storage/uploads/2023/01/26/63d2cbda354batime.svg);
+            background-size: cover;
+        }
+    }
+}

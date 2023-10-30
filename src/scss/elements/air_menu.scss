@@ -1,0 +1,21 @@
+.air-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 24px;
+
+    &__list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: spacer(4);
+        margin-bottom: spacer(7);
+    }
+
+    &__item {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 400;
+        transition: color .3s ease-in-out;
+    }
+}

@@ -1,0 +1,124 @@
+.modal {
+    z-index: 15;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    &__close-btn {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        padding: 12px;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        cursor: pointer;
+
+        & > svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &__content {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 80px 0;
+
+        & > .container {
+            width: 100%;
+            margin-top: auto;
+        }
+    }
+
+    &__overlay {
+        z-index: 14;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-image: $main-gradient;
+    }
+
+    &__logo {
+        position: absolute;
+        left: 40px;
+        top: 40px;
+    }
+
+    &__paralax {
+        &--primary {
+            right: -200px;
+            top: -200px;
+
+            @media (max-width: 768px) {
+                top: auto;
+                right: auto;
+                bottom: -300px;
+                left: -300px;
+            }
+        }
+
+        &--second {
+            bottom: -100px;
+            left: -100px;
+
+            @media (max-width: 768px) {
+                display: none;
+            }
+        }
+
+        &--third {
+            position: absolute;
+            top: -200px;
+            left: 50%;
+        }
+    }
+
+    /** Slide */
+    &__slide-fade.slide-fade-enter-active {
+    transition: all .4s ease-out;
+    }
+
+    &__slide-fade.slide-fade-leave-active {
+    transition: all .4s ease-out;
+    }
+
+    &__slide-fade.slide-fade-enter-from,
+    &__slide-fade.slide-fade-leave-to {
+    transform: translateY(-60%);
+    opacity: 0;
+    }
+
+    /** Overlay */
+    &__overlay-fade.fade-enter-active {
+        transition: opacity 0.5s ease;
+
+        & .modal__paralax {
+            transition: all 0.4s ease-out;
+        }
+    }
+
+    &__overlay-fade.fade-leave-active {
+    transition: opacity 0.5s ease;
+
+        & .modal__paralax {
+            transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
+        }
+    }
+
+    &__overlay-fade.fade-enter-from,
+    &__overlay-fade.fade-leave-to {
+        opacity: 0;
+
+        & .modal__paralax {
+            transform: translateY(-60%);
+            opacity: 0;
+        }
+    }
+}

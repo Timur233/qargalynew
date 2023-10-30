@@ -1,0 +1,28 @@
+{% if discount_enable %}
+    <section class="section discounts">
+        <div class="container">
+            {% if discount_title %}
+                <div class="section__title-block">
+                    <h2 class="section__title">{{ discount_title }}</h2>
+                </div>
+            {% endif %}
+            <discount-swiper>
+                {% for item in discount_items %}
+                    <swiper-slide>
+                        <picture>
+                            <source 
+                                media="(max-width: 550px)" 
+                                srcset="https://cms.abpx.kz{{ item.children[1].settings.image.path }}">
+                            <img 
+                                src="https://cms.abpx.kz{{ item.children[0].settings.image.path }}" 
+                                class="swiper-lazy discounts__image"
+                                @click="callbackModalShow = !callbackModalShow"
+                            >
+                        </picture>
+                        <div class="swiper-lazy-preloader"></div>
+                    </swiper-slide>
+                {% endfor %}
+            </discount-swiper>
+        </div>
+    </section>
+{% endif %}

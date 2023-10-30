@@ -1,0 +1,23 @@
+.banners {
+    &__list {
+        margin: 0 -8px;
+        row-gap: 16px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+    }
+
+    &__item {
+        padding: 0 8px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        filter: grayscale(1);
+    }
+}

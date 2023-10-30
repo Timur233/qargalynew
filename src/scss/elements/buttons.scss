@@ -1,0 +1,138 @@
+.btn {
+    display: inline-block;
+    position: relative;
+    padding: 12px 20px;
+    font-size: 12px;
+    line-height: normal;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: $white;
+    cursor: pointer;
+    border-radius: 1px;
+    border: 2px solid $blue;
+    background-color: $blue;
+    transition: 
+        $fast-animation background-color, 
+        $fast-animation border-color,
+        $slow-animation box-shadow;
+    user-select: none;
+
+    @media (min-width: 1600px) {
+        font-size: 14px;
+    }
+
+    @media (max-width: 520px) {
+        font-size: 16px;
+        padding: spacer(3) spacer(7);
+    }
+
+    &:hover {
+        background-color: lighten($blue, 5);
+        border-color: lighten($blue, 5);
+    }
+
+    &:focus,
+    &:active {
+        box-shadow: 8px 8px 28px rgb(0 0 0 / 14%);  
+    }
+
+    &__circle {
+        padding: spacer(2);
+        border-color: rgba($gray-light-btns, .2);
+        background-color: rgba($gray-light-btns, .2);
+        box-shadow: 0px 2px 5px -3px rgba($black, 45%);
+
+        & > img {
+            display: block;
+            transition: $fast-animation transform, $fast-animation box-shadow;
+        }
+
+        &--active > img {
+            transform: rotate(180deg);
+        }
+
+        &:hover {
+            background-color: rgba($gray-light-btns, .2);
+            border-color: rgba($gray-light-btns, .2);
+        }
+    
+        &:focus,
+        &:active {
+            background-color: rgba($gray-light-btns, .4);
+            border-color: rgba($gray-light-btns, .4);
+            box-shadow: 0px 0px 5px -3px rgba($black, 45%);
+        }
+    }
+
+    &--black {
+        border: none;
+        background: $black;
+        color: $white;
+    }
+
+    &--white {
+        border: none;
+        background: $white;
+        color: $black;
+    }
+    
+
+    &--outline {
+        border: 2px solid;
+        border-color: #fff;
+        background: none;
+        color: $white;
+    }
+
+    &--gradient {
+        border: none;
+        color: $white;
+        background: $button-gradient;
+        box-shadow: 8px 8px 18px rgb(0 0 0 / 14%);
+        padding: 12px 20px;
+
+        &:focus,
+        &:active {
+            box-shadow: 8px 8px 28px rgb(0 0 0 / 14%);
+        }
+    }
+
+    &--inner-shadow {
+        padding: 6px 10px;
+        min-width: 36px;
+        background: #f4f3f1 !important;
+        font-size: 12px;
+        font-weight: 400;
+        color: #333;
+        text-align: center;
+        box-shadow: inset 2px 2px 4px #d9d5ce !important;
+        transition: box-shadow .3s,-webkit-box-shadow .3s;
+        border: none;
+        letter-spacing: 0;
+
+        @media (min-width: 1600px) {
+            font-size: 14px;
+        }
+
+        &.active {
+            background: $blue !important;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2) !important;
+            color: #fff;
+            font-weight: 900;
+
+            @media (min-width: 1600px) {
+                font-weight: 600;    
+            }
+        }
+    }
+
+    &--filter-big {
+        padding: 8px 14px;
+        font-size: 16px;
+
+        @media (min-width: 1600px) {
+            font-size: 18px;
+        }
+    }
+
+}
